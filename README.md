@@ -2,15 +2,15 @@
 说明：在网上看到很多破解了极验的滑动验证码和文字点选验证码，但是很少见破解空间推理的，就训练了个yolo模型，试试在验证码上的效果。
 同时通过反爬极验的接口获取的加密方法，使用requests，因此比网上已有的selenium自动化浏览器点击滑动破解验证码的方法相比，速度极快，需要的依赖也少。   
 ![image](https://github.com/cycyup/crack_geetest/blob/main/images/test1.jpg)  
-预测速度在GTX1070ti上能达到30ms，就算在最低配1核cpu 2G内存最低配的服务器上也能达到200ms
-## **声明**
-本项目仅供学习交流使用，严禁用于商业和违法行为，否则产生的一切后果与本人无关。
+模型的精度为0.97 预测速度在GTX1070ti上能达到30ms，就算在最低配1核cpu 2G内存最低配的服务器上也能达到200ms，足够一定量并发预测   
 
-## **破解**
-三个步骤：  
-1、yolo训练一个定位模型，定位物体形状、颜色和位置。  
-2、分析文本确实需要点击的物体位置。    
-3、破解geetest：极验的验证原理  
+## **声明**
+**本项目仅供学习交流使用，严禁用于商业和违法行为，否则产生的一切后果与本人无关！！！！**
+
+## **破解**   
+### 使用方法  
+1.从需要破解验证码的网页上获取验证码的gt和challenge 
+2.使用gt和challenge的获取验证码类型，获取图片、文字信息和一些生成。
 ```
 url = 'https://api.geetest.com/ajax.php'
 
@@ -20,12 +20,13 @@ payload = {
   'lang': 'zh-cn',
   'pt': 0',
   'client_type': 'web',
-  'w': 'Y1gV9CACfWsfd)vtGUQD(WuKBZnmxhgfpXfD)qDHwhG(h1F4rOco7PfFt)4vlHUUMcFaDXzAaKVOcCsrBOjPwbH8P1Q2LvATjyd)hmsKFjTfLQlMVdlezWdQJPMQA6IfA4QDAVOHBsq333vbTpo1oNtRi1D9bm8ILQonvPY9EOiqfmB8pTmAYLqfu()bCRuuOI51cH7St8ksx0kqeKhaLJa)fYB8h9oQZHbbw1ucCrjOYBOIJN00MUdEINY2Z6e3LUN(A)HcQDJKJtTZvd)QErRCDZWEs71Bfn8ThYp9dqMU0CToRDoP(pb8eI7G1OgLtCiwXBQ211rCUhO)JoMYmKAreFrdQe)asgBCsvuKsPYKPdmmrA)bGlkR4PC35b3vF8)nJ0IDnbYJ8Gq4NROa5kSjObvvFUJ8h7jl87ROMsy9CVp)HNhqBvIYW0nxRyK4yNKxVQ7e2W4XBvWVA7STSYW)SXcPbKNhFaxFa)E0jlmbmcpPc7yzRPr9LBSg4IrHuaoaQc7RtS1PTIOfG0wKmFTUzlS(CPL3eiQR88p6BsjleMiy991GNaBsZjtRTmJ1QQXkY20N(EOxSSPnvktxQMgD7dLObhh6h(2wx(knNlsjdk8l20X(gRfWxFnGErW7E7qFPiUAOv7Z(RUOXgiJ)pJzCcrL8rJfuiBZJXAkqdLyc31IjpiWqOY2lCjpKF6gCfvndwB28u7AMU5laBnoOsjD3u2JLbn3yLWaYj6gc6DqN0g8kMcUIeUuoNJlL(tB1TfwQydnRU2dU7D3aWE(5(0XfhT6)ppYeQ0CaYhYpZ5ScXmh02mIqaezGQEL(iNxJNloR8C6)1uy46QYsBypeihPDe8SeWGqGdHyNhx(J0A(q74EJgBzBxLG1t93550F729Q5nLokJLb18LM6T(kHwu6KZlJt4C6BJ0ZfFzJMVasXKy5ibyXsMXDWB4cokQ1w8uvTOz7OKhQVFBIBQKVBExCV93VB)egfWxDemoQ84lB0oMYSfeBT3IaLgf9RwmTVyJ3d0Ica7dykVVZsucCJY4Vm0QHEklZ162hSSTTeVhCCIgVD(O6CB7lcJSGSinnyMAHp9wFdiOLyvPJg5xLapxketLcWtC9D0svBD(wPzu0YMMEG2q)QDSIUVySrdjpOt03V(qJATzKxwKt04dJcAuHJp(04s(feSWyJAT7xY6g696QycV6GdeZDwA0Uk6wuY)NGYHvtORiZwX8zsykHZhe(RHw(SOXTqLpZCyO3QSsDYjANSFKQPBwWUPn2JXnCvYszqT9uYB0gqnkMtKQaeBnYfRlZH4BUZbApH7Gj584EntI2LVSihHBo4bCp5bwXSMIzFv5kdwia1k7YUZTfFD1SixXDEXzuz6J1HyWXR4TNjWIqE0M7YyouXL7Huj9uoI2qE84GEtKLBYZwk7tI33ZA)dJj75(r82NJW6kueE)FWUHAyC0lpmDezkIQmosGWkem)13Ju34nrtMJvS6DwNlhGI5k38LTOVpdETnTY1MvuUKx6465GF5An0caRF9lsdZPXzR(UE(P61q5)trpelWQaV5EBhv2jLye9f2Rb7kAae87ElBN(lxdxH3)WFPWsqgq7egMf00Cfvy8Z(TWjdD8(ikWiDOiJVRZeGzKsv51TSGv)f5Y7PlsVuHgxvksgd9eZ)69U0RM96tmCeV5q3SgBLLcG8nh)P0THd(ERmq)6AyP5wNN0CRjV)x060FAj9DJRi0g5GzlSG(3kehUMnxtl5LtJiLkloI25n2NHACTdmj)300R96zjLhmO)IAo2FL4rJ(QJ)bINNc4DIDZCFKET7ACpDEgdVuml)00VCUYfOT7Tvolvn5p9FVb9alPU(Upzd0ZS8Ao3Ium6dfsZMYIILR6dH7bVr6iK9eH5B0ehGWVFhf)JwzPA04OfNGfIzluKGNoAGQ4ifkJ8t7zbcrbVrC66PUk2q8pFusoLugiWdYSBAmT5t06lLrS8U6)(3gjyO8SGn35SrTroe6UGPqq1IM2O(DTDBWNTdDG6QZ(4B1RszvpMMpDOzuYLxzxvv)tJruMuo2W2vdUn)PTirOJKIgt6ezHUN8iUzIRud4ip9UeDYnlQAegEA(FV)N4mqQLu(DLAkMqLMT6xzBetnOmnMPn2YHoQnEqjpWd3M.696d42ac8f5bce4b4d9f4bd1bf86f1edb708f4b92f87953548a3ed65bde0f2fd096936e3bdda10ae01b1b45ea95f0559fe5590ccf4f66122267fa7b6a71169daea456583d06a2c1c1a17c01e0a8bb3b716e375c9dcd3c0ebacaac2c3f6841beaa177a17bba4f7d859904c907f2e53b3006468da4c2c38774d2576172c2fcea79'
+  'w': 'Y1gV9CACfWsfd)vtGUQD(WuKBZnmxhgfpXfD)qDHwhG(h1F4rOco……(略) //点击的坐标和一些信息的加密信息
   'callback': 'geetest_1644752017507'
 }
 ```
 上面的请求是获取validate的最后一步，可以看出只要获得 
-
+1.yolo训练一个定位模型，定位物体形状、颜色和位置。  
+2.分析文本确实需要点击的物体位置。
 
 ## 细教程（图文并茂）已发表在
 
