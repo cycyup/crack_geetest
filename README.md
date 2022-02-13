@@ -12,15 +12,49 @@
 1.从需要破解验证码的网页上获取验证码的gt和challenge 
 2.使用gt和challenge的获取验证码类型，获取图片、文字信息和一些生成。
 ```
-url = 'https://api.geetest.com/ajax.php'
+url = 'https://api.geetest.com/get.php'
+# 请求参数
+is_next: true
+type: click
+gt: c9428d9361cd70d26e28d7cd780ec640
+challenge: 6c6c16991df7b7fa7596ee70872f96bf
+lang: zh-cn
+https: true
+protocol: https://
+offline: false
+product: float
+api_server: api.geetest.com
+isPC: true
+autoReset: true
+width: 100%
+callback: geetest_1644770447212
 
+# 请求响应
+"data": {
+    "theme": "silver",
+    "theme_version": "1.5.0",
+    "static_servers": ["static.geetest.com/", "dn-staticdown.qbox.me/"],
+    "api_server": "api.geetest.com",
+    "logo": false,
+    "sign": "\u8bf7_\u70b9\u51fb_\u5728\u5927\u578b\u7eff\u8272\u7403\u4f53\u540e\u9762\u7684\u7ea2\u8272\u7269\u4f53\u3002", # 点击物体的文字信息
+    "pic": "/nerualpic/space_l1_zh_2019.07.17/space/587417a058088f2f5934e22fcc503980.jpg",  # 图片的url地址，同时也是后续加密生成w需要
+    "pic_type": "space",
+    "num": 0,
+    "c": [12, 58, 98, 36, 43, 95, 62, 15, 12],  # 后续生成w需要
+    "s": "514c622c",  # 后续加密生成w需要
+    ······
+  }
+```
+
+```
+url = 'https://api.geetest.com/ajax.php'
 payload = {
   'gt': 'c9428d9361cd70d26e28d7cd780ec640',
   'challenge': '33146d766e1c5632215cf424ec17e5ef',
   'lang': 'zh-cn',
   'pt': 0',
   'client_type': 'web',
-  'w': 'Y1gV9CACfWsfd)vtGUQD(WuKBZnmxhgfpXfD)qDHwhG(h1F4rOco……(略) //点击的坐标和一些信息的加密信息
+  'w': 'Y1gV9CACfWsfd)vtGUQD(WuKBZnmxhgfpXfD)qDHwhG(h1F4rOco··· //点击的坐标和一些信息的加密信息
   'callback': 'geetest_1644752017507'
 }
 ```
