@@ -9,13 +9,13 @@
 ## **声明**
 **本项目仅供学习交流使用，严禁用于商业和违法行为，否则产生的一切后果与本人无关！！！！**
 
-[测试接口](http://www.cnblogs.com/sxdcgaq8080/p/7894828.html)（仅供学习使用）
+### [测试接口](https://github.com/cycyup/crack_geetest/blob/main/%E6%B5%8B%E8%AF%95%E6%8E%A5%E5%8F%A3.md)（仅供学习使用）
 
 ## **破解**     
-1.从需要破解验证码的网页上获取验证码的gt和challenge    
-2.使用gt和challenge的获取验证码类型，获取图片、文字信息和一些生成。   
+1、从需要破解验证码的网页上获取验证码的gt和challenge    
+2、使用gt和challenge的获取验证码类型，获取图片、文字信息和一些生成。   
     
-对存在验证码的网页抓包可以看到，验证步骤分为获取图片获取js，在网页中弹出验证码。
+* 对存在验证码的网页抓包可以看到，验证步骤分为获取图片获取js，在网页中弹出验证码。
 ```
 url = 'https://api.geetest.com/get.php'
 # 请求参数
@@ -50,11 +50,11 @@ callback: geetest_1644770447212
     ······
   }
 ```
-点击坐标后提交，将坐标等信息加密post给服务器，返回validate的值表示验证成功。    
+3、点击坐标后提交，将坐标等信息加密post给服务器，返回validate的值表示验证成功。    
     
-代码里可以用yolo定位物体形状、颜色和位置。     
-然后根据sign文字描述，选出需要点击的物体，算出坐标。   
-详细教程待写。   
+* 代码里可以用yolo定位物体形状、颜色和位置。     
+* 然后根据sign文字描述，选出需要点击的物体，算出坐标。   
+* 详细教程待写。   
 
 ```
 url = 'https://api.geetest.com/ajax.php'
@@ -78,7 +78,7 @@ url = 'https://api.geetest.com/ajax.php'
       }
 }
 ```
-有了validate就可以和gt，challenge一起交给需要登录的网站做验证了。    
+4、有了validate就可以和gt，challenge一起交给需要登录的网站做验证了。    
 
 
 ## 细教程（图文并茂）已发表在
