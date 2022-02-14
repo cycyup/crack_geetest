@@ -54,11 +54,12 @@ payload = {
   'lang': 'zh-cn',
   'pt': 0',
   'client_type': 'web',
-  'w': 'Y1gV9CACfWsfd)vtGUQD(WuKBZnmxhgfpXfD)qDHwhG(h1F4rOco··· //点击的坐标和一些信息的加密信息
+  'w': 'Y1gV9CACfWsfd)vtGUQD(WuKBZnmxhgfpXfD)qDHwhG(h1F4rOco··· //点击的坐标和一些信息的加密信息（点击坐标，图片pic，上面的c和s内容）
   'callback': 'geetest_1644752017507'
 }
 ```
-上面的请求是获取validate的最后一步，可以看出只要获得 
+上面的请求是获取validate的最后一步，可以看出只要获取坐标，将参数加密得到w就可以完成破解了。
+
 1.yolo训练一个定位模型，定位物体形状、颜色和位置。  
 2.分析文本确实需要点击的物体位置。
 
