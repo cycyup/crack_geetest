@@ -9,11 +9,11 @@
 ## **声明**
 **本项目仅供学习交流使用，严禁用于商业和违法行为，否则产生的一切后果与本人无关！！！！**
 
-## **破解**   
-### 使用方法  
-1.从需要破解验证码的网页上获取验证码的gt和challenge 
-2.使用gt和challenge的获取验证码类型，获取图片、文字信息和一些生成。
-#
+## **破解**     
+1.从需要破解验证码的网页上获取验证码的gt和challenge    
+2.使用gt和challenge的获取验证码类型，获取图片、文字信息和一些生成。   
+    
+对存在验证码的网页抓包可以看到，验证步骤分为获取图片获取js，在网页中弹出验证码。
 ```
 url = 'https://api.geetest.com/get.php'
 # 请求参数
@@ -48,23 +48,36 @@ callback: geetest_1644770447212
     ······
   }
 ```
-
+点击坐标后提交，将坐标等加密给服务器，返回validate表示通过验证码
 ```
 url = 'https://api.geetest.com/ajax.php'
-payload = {
-  'gt': 'c9428d9361cd70d26e28d7cd780ec640',
-  'challenge': '33146d766e1c5632215cf424ec17e5ef',
-  'lang': 'zh-cn',
-  'pt': 0',
-  'client_type': 'web',
-  'w': 'Y1gV9CACfWsfd)vtGUQD(WuKBZnmxhgfpXfD)qDHwhG(h1F4rOco··· //点击的坐标和一些信息的加密信息（点击坐标，图片pic，上面的c和s内容）
-  'callback': 'geetest_1644752017507'
+# 请求参数
+'gt': 'c9428d9361cd70d26e28d7cd780ec640',
+'challenge': '33146d766e1c5632215cf424ec17e5ef',
+'lang': 'zh-cn',
+'pt': 0',
+'client_type': 'web',
+'w': 'Y1gV9CACfWsfd)vtGUQD(WuKBZnmxhgfpXfD)qDHwhG(h1F4rOco··· //点击的坐标和一些信息的加密信息（点击坐标，图片pic，上面的c和s内容）
+'callback': 'geetest_1644752017507'
+
+# 请求响应
+{
+     "status": "success", 
+     "data": {
+          "result": 
+          "success", 
+          "validate": "23ff2a4fddac68b9e40884befcfbb9af", 
+          "score": "1"
+          }
 }
 ```
-上面的请求是获取validate的最后一步，可以看出只要获取坐标，将参数加密得到w就可以完成破解了。
+有了validate就可以和gt，challenge一起交给需要登录的网站做验证了。   
+详细破解js的教程在csdn找，这里提供个接口可以传图片等参数可以生成w。
 
-1.yolo训练一个定位模型，定位物体形状、颜色和位置。  
-2.分析文本确实需要点击的物体位置。
+
+yolo训练一个定位模型，定位物体形状、颜色和位置。  
+
+分析文本确实需要点击的物体位置。
 
 ## 细教程（图文并茂）已发表在
 
