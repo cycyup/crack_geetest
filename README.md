@@ -9,6 +9,8 @@
 ## **声明**
 **本项目仅供学习交流使用，严禁用于商业和违法行为，否则产生的一切后果与本人无关！！！！**
 
+[测试接口](http://www.cnblogs.com/sxdcgaq8080/p/7894828.html)（仅供学习使用）
+
 ## **破解**     
 1.从需要破解验证码的网页上获取验证码的gt和challenge    
 2.使用gt和challenge的获取验证码类型，获取图片、文字信息和一些生成。   
@@ -48,7 +50,12 @@ callback: geetest_1644770447212
     ······
   }
 ```
-点击坐标后提交，将坐标等加密给服务器，返回validate表示通过验证码
+点击坐标后提交，将坐标等信息加密post给服务器，返回validate的值表示验证成功。    
+    
+代码里可以用yolo定位物体形状、颜色和位置。     
+然后根据sign文字描述，选出需要点击的物体，算出坐标。   
+详细教程待写。   
+
 ```
 url = 'https://api.geetest.com/ajax.php'
 # 请求参数
@@ -68,16 +75,11 @@ url = 'https://api.geetest.com/ajax.php'
           "success", 
           "validate": "23ff2a4fddac68b9e40884befcfbb9af", 
           "score": "1"
-          }
+      }
 }
 ```
-有了validate就可以和gt，challenge一起交给需要登录的网站做验证了。   
-详细破解js的教程在csdn找，这里提供个接口可以传图片等参数可以生成w。
+有了validate就可以和gt，challenge一起交给需要登录的网站做验证了。    
 
-
-yolo训练一个定位模型，定位物体形状、颜色和位置。  
-
-分析文本确实需要点击的物体位置。
 
 ## 细教程（图文并茂）已发表在
 
