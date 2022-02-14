@@ -13,6 +13,7 @@
 ### 使用方法  
 1.从需要破解验证码的网页上获取验证码的gt和challenge 
 2.使用gt和challenge的获取验证码类型，获取图片、文字信息和一些生成。
+#
 ```
 url = 'https://api.geetest.com/get.php'
 # 请求参数
