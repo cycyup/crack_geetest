@@ -71,8 +71,7 @@ url = 'https://api.geetest.com/ajax.php'
 {
      "status": "success", 
      "data": {
-          "result": 
-          "success", 
+          "result": "success", 
           "validate": "23ff2a4fddac68b9e40884befcfbb9af", 
           "score": "1"
       }
