@@ -1,125 +1,10 @@
 import requests
 import time
 import json
-from PIL import Image
-import io
-import execjs
-
-from yolo5.detect import get_labels
-from nlp import get_xy
-
-
-with open('encryption.js', encoding='utf-8') as f:
-    js_data = f.read()
-
-
-def get_w(xy, pic, nc, ns, gt, challenge):
-    passtime = 710
-    t = int(time.time() * 1000)
-    click = [
-    [
-        "blur",
-        t
-    ],
-    [
-        "focus",
-        t+100
-    ],
-    [
-        "focus",
-        t+100
-    ],
-    [
-        "down",
-        318,
-        349,
-        t+200,
-        "pointerdown"
-    ],
-    [
-        "move",
-        318,
-        349,
-        t+250,
-        "pointermove"
-    ],
-    [
-        "up",
-        318,
-        349,
-        t+300,
-        "pointerup"
-    ],
-    [
-        "move",
-        318,
-        349,
-        t+302,
-        "mousemove"
-    ],
-    [
-        "down",
-        318,
-        349,
-        t+303,
-        "mousedown"
-    ],
-    [
-        "up",
-        318,
-        349,
-        t+304,
-        "mouseup"
-    ],
-    [
-        "down",
-        327,
-        520,
-        t+400,
-        "pointerdown"
-    ],
-    [
-        "up",
-        327,
-        520,
-        t+450,
-        "pointerup"
-    ],
-    [
-        "move",
-        327,
-        520,
-        t+470,
-        "mousemove"
-    ],
-    [
-        "down",
-        327,
-        520,
-        t+470,
-        "mousedown"
-    ],
-    [
-        "focus",
-        t+470
-    ],
-    [
-        "up",
-        327,
-        520,
-        t+471,
-        "mouseup"
-    ]
-]
-
-    js = execjs.compile(js_data)
-    return js.call('getW', click, xy, pic, nc, ns, gt, challenge, passtime)
-
 
 def geetest_crack():
     session = requests.session()
-    session.proxies = {'https': '42.6.114.104:2357'}
-    start_time = time.time()
+    
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                       'Chrome/97.0.4692.71 Safari/537.36',
@@ -132,8 +17,7 @@ def geetest_crack():
 
     res = session.get(url=register_url, headers=headers)
     res = json.loads(res.text)
-    gt = res['gt']
-    challenge = res['challenge']
+    gt, challenge = res['gt'], res['challenge']
 
     get_url = f"https://api.geetest.com/get.php?gt={gt}&challenge={challenge}" \
               f"&lang=zh-cn&pt=0&client_type=web&w=&callback=geetest_{str(int(time.time()) * 1000)}"
