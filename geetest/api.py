@@ -1,16 +1,21 @@
 import requests
 import json
+headers = {
+	'Content-Type': 'application/json'
+}
+
 
 def get_w(gt, challenge, pic, sign, c, s):
 	url = 'http://116.62.154.65:5550/object_detection'
 
-	data = {
+	payload= {
 		"challenge": challenge,
 		"pic": pic,
 		"sign": sign,
 	}
-	response = requests.post(url, json=data)
+	response = requests.post(url, json=payload, headers=headers)
 	response = json.loads(response.text)
+	print(response)
 	coordinate = response['coordinate']
 
 	# 响应内容
@@ -19,8 +24,8 @@ def get_w(gt, challenge, pic, sign, c, s):
 	#     "labels": [
 	#         {
 	#             "confidence": 0.8949509859085083,  # 置信度过小可以判定为错误定位
-	#             "name": "红方块",                  # 物体颜色和形状 为了准确性没有分类大小
-	#             "xmax": 171.88429260253906, 	 # 物体的大小可以通过高度判断
+	#             "name": "红方块",    # 物体颜色和形状 为了准确性没有分类大小
+	#             "xmax": 171.88429260253906, 	# 物体的大小可以通过高度判断
 	#             "xmin": 76.12577819824219,
 	#             "ymax": 248.02699279785156,
 	#             "ymin": 149.64186096191406
@@ -38,7 +43,8 @@ def get_w(gt, challenge, pic, sign, c, s):
 	# }
 
 	url = 'http://116.62.154.65:5550/get_w'
-	data = {
+
+	payload = {
 		"challenge": challenge,
 		"pic": pic,
 		"gt": gt,
@@ -46,7 +52,7 @@ def get_w(gt, challenge, pic, sign, c, s):
 		"s": s,
 		"coordinate": coordinate
 	}
-	response = requests.post(url, json=data)
+	response = requests.post(url, json=payload, headers=headers)
 	print(response.text)
 	# 响应内容
 	# {
