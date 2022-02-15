@@ -10,7 +10,7 @@ headers = {
 def get_w(gt, challenge, pic, sign, c, s):
 	url = 'http://116.62.154.65:5550/object_detection'
 
-	payload= {
+	payload = {
 		"challenge": challenge,
 		"pic": pic,
 		"sign": sign,
