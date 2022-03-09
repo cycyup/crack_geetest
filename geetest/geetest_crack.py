@@ -1,6 +1,8 @@
 import requests
 import time
 import json
+from geetest.api import get_w
+
 
 def geetest_crack():
     session = requests.session()
@@ -42,22 +44,16 @@ def geetest_crack():
     data = json.loads(data[22:-1])['data']
 
     pic = data['pic']
-    pic_url = 'https://static.geetest.com' + pic + '?challenge=' + challenge
-    nc, ns, sign = data['c'], data['s'], data['sign'].split('_')[2]
 
-    t = time.time()
+    nc, ns, sign = data['c'], data['s'], data['sign']
 
-    image = requests.get(pic_url, headers=headers)
-    data_stream = io.BytesIO(image.content)
-    pil_image = Image.open(data_stream)
-    labels = get_labels(pil_image)
-    print(labels)
-    xy = get_xy(sign, labels)
+    start_time = time.time()
 
-    w_value = get_w(xy, pic, nc, ns, gt, challenge)
+    w_value = get_w(gt, challenge, pic, sign, nc, ns)
+
     delay = time.time() - start_time
-    print(delay)
-    time.sleep(delay)
+    time.sleep(2 - delay)
+
     value_url = 'https://api.geetest.com/ajax.php?' \
                 'gt='+gt+'&' \
                 'challenge='+challenge+'&lang=zh-cn&pt=3&client_type=web_mobile&' \
