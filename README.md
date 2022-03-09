@@ -80,6 +80,7 @@ url = 'https://api.geetest.com/ajax.php'
 4、有了validate就可以和gt，challenge一起交给需要登录的网站做验证了。    
 
 
-## 细教程（图文并茂）已发表在
-
+## 细教程（图文并茂）已发表在  
+### [geetest极验空间推理验证码破解与研究](https://mp.csdn.net/mp_blog/creation/editor/122953184)  
+    
 ## 觉得不错帮忙Star一下
